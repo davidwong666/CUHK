@@ -1,10 +1,9 @@
-
 Time limit: 5000ms
 Memory limit: 256mb
 
 -------------------------Copy the following code, complete it and submit---------------------
 
-
+/*
 I, <Your Full Name>, am submitting the assignment for
 an individual project.
 I declare that the assignment here submitted is original except for
@@ -19,7 +18,7 @@ http://www.cuhk.edu.hk/policy/academichonesty/.
 It is also understood that assignments without a properly signed
 declaration by the student concerned will not be graded by the
 teacher(s).
-
+*/
 
 #include <stdio.h>
 #include <stdlib.h>

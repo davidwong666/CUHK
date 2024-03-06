@@ -84,15 +84,33 @@ int IsFull(QueueADT q) {
 // Tips: You should check if it is full
 void Enqueue(QueueADT q, int value) {
     // write your code here
-
+    if (!IsFull(q)) {
+        QueueNode newNode = AllocateEmptyQueueNode();
+        newNode->value = value;
+        newNode->next = q->tail;
+        newNode->prev = q->tail->prev;
+        q->tail->prev->next = newNode;
+        q->tail->prev = newNode;
+        q->size++;
+    }
 }
-
 // Description: Dequeue an item from the queue
 // Usage: int result = Dequeue(yourQueue);
 // Tips: If it is empty, you should return INF. Otherwise, return the value of the item.
 int Dequeue(QueueADT q) {
     // write your code here
-
+    if(!IsEmpty(q)){
+        QueueNode nodeToRemove = q->head->next;
+        int value = nodeToRemove->value;
+        q->head->next = nodeToRemove->next;
+        nodeToRemove->next->prev = q->head;
+        free(nodeToRemove);
+        q->size--;
+        return value;
+    }
+    else{
+        return INF;
+    }
 }
 
 // Description: Input management

@@ -59,7 +59,10 @@ int IsFull(StackADT s) {
 // Tips: If it is full, do nothing.
 void Push(StackADT s, int value) {
     // write your code here
-
+    if(!IsFull(s)){
+        s->arr[s->size] = value;
+        s->size++;
+    }
 }
 
 // Description: Pop a value from the stack
@@ -67,7 +70,9 @@ void Push(StackADT s, int value) {
 // Tips: If it is empty, do nothing.
 void Pop(StackADT s) {
     // write your code here
-
+    if(!IsEmpty(s)){
+        s->size--;
+    }
 }
 
 // Description: Obtain the top value from the stack
@@ -75,7 +80,12 @@ void Pop(StackADT s) {
 // Tips: Your should check if it is empty. If empty, you should return INF.
 int Top(StackADT s) {
     // write your code here
-
+    if(IsEmpty(s)){
+        return INF;
+    }
+    else{
+        return s->arr[s->size-1];
+    }
 }
 
 // Description: Input management

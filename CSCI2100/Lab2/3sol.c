@@ -69,7 +69,10 @@ int IsStackFull(StackADT s) {
 // Tips: If it is full, do nothing.
 void Push(StackADT s, int value) {
     // write your code here
-
+    if(!IsStackFull(s)){
+        s->arr[s->size] = value;
+        s->size++;
+    }
 }
 
 // Description: Pop a value from the stack
@@ -77,7 +80,9 @@ void Push(StackADT s, int value) {
 // Tips: If it is empty, do nothing.
 void Pop(StackADT s) {
     // write your code here
-
+    if(!IsStackEmpty(s)){
+        s->size--;
+    }
 }
 
 // Description: Obtain the top value from the stack
@@ -85,7 +90,8 @@ void Pop(StackADT s) {
 // Tips: Your should check if it is empty. If empty, you should return INF.
 int Top(StackADT s) {
     // write your code here
-
+    if(IsStackEmpty(s)) return INF;
+    else return s->arr[s->size-1];
 }
 
 // Description: Create a queue with the capacity xxx
@@ -116,7 +122,10 @@ int IsQueueFull(QueueADT q) {
 // Tips: You should check if it is full
 void Enqueue(QueueADT q, int value) {
     // write your code here
-
+    if(!IsQueueFull(q)){
+        Push(q->s1, value);
+        q->size++;
+    }
 }
 
 // Description: Dequeue an item from the queue
@@ -124,7 +133,20 @@ void Enqueue(QueueADT q, int value) {
 // Tips: If it is empty, you should return INF. Otherwise, return the value of the item.
 int Dequeue(QueueADT q) {
     // write your code here
-
+    while(!IsStackEmpty(q->s1)){
+        int value = Top(q->s1);
+        Pop(q->s1);
+        Push(q->s2, value);
+    }
+    int front = Top(q->s2);
+    Pop(q->s2);
+    while (!IsStackEmpty(q->s2)) {
+        int value = Top(q->s2);
+        Pop(q->s2);
+        Push(q->s1, value);
+    }
+    q->size--;
+    return front;
 }
 
 // Description: Input management

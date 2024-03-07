@@ -96,13 +96,15 @@ int Top(StackADT s) {
 int DoSomething(StackADT s, int value) {
     // write your code here
     int count = 0;
-    int max;
+    int maxheight;
+    // base case for the first building
     if(IsEmpty(s)){
+        maxheight = value;
         Push(s, value);
-        max = value;
-        return count;
+        return 0;
     }
     
+    return count;
 }
 
 int main() {

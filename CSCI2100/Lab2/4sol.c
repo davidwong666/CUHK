@@ -95,16 +95,14 @@ int Top(StackADT s) {
 // Tips: This property should help a new item calculate the number of unblocked buildings it can see.
 int DoSomething(StackADT s, int value) {
     // write your code here
-    int count = 0;
-    int maxheight;
+    static int count = 0;
+    static int maxheight;
     // base case for the first building
     if(IsEmpty(s)){
         maxheight = value;
         Push(s, value);
         return 0;
     }
-    
-    return count;
 }
 
 int main() {

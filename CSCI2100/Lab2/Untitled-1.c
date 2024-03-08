@@ -100,25 +100,24 @@ int DoSomething(StackADT s, int value) {
     static int maxheight, prevpos = 0;
     // base case for the first building
     if(IsEmpty(s)){
-        maxheight = value;
-        prevpos = 1;
+        maxheight = blockingheight = value;
         Push(s, value);
         return 0;
     }
     StackADT temp = CreateStack(s->capacity);
     if(value > maxheight){
         maxheight = value;
-        Push(s, value);
         prevpos = s->size;
+        Push(s, value);
         count = 0;
-        return s->size-1;
+        return s->size - 1;
     }
     else if(value == maxheight){
         count = 0;
         int pos = prevpos; // create pos for return
         Push(s, value);
         prevpos = s->size; // update prevpos
-        return s->size-pos;
+        return s->size - pos - 1;
     }
     //for value < maxheight
     else{

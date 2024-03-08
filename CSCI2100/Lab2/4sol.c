@@ -118,7 +118,7 @@ int DoSomething(StackADT s, int value) {
         int pos = prevpos; // create pos for return
         Push(s, value);
         prevpos = s->size; // update prevpos
-        return s->size-pos;
+        return s->size - pos;
     }
     //for value < maxheight
     else{
@@ -130,20 +130,10 @@ int DoSomething(StackADT s, int value) {
                     Push(temp, Top(s));
                     Pop(s);
                 }
-                else if(value == Top(s)){
-                    blockingheight = value;
-                    caseA = 2;
-                    count++;
-                    Push(temp, Top(s));
-                    Pop(s);
-                }
+                // if value <= Top(s)
                 else{
-                    if(Top(s) == maxheight){
-                        count++;
-                        break;
-                    }
-                    caseA = 2;
                     blockingheight = Top(s);
+                    caseA = 2;
                     count++;
                     Push(temp, Top(s));
                     Pop(s);

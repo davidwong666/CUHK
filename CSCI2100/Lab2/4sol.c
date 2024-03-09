@@ -103,6 +103,7 @@ int DoSomething(StackADT s, int value) {
     else{
         
     }
+
     Push(s, value);
     return count;
 }

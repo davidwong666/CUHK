@@ -94,8 +94,7 @@ int Top(StackADT s) {
 // Tips: Before you push a new item into the stack, you may do something in order to maintain certain property of this stack.
 // Tips: This property should help a new item calculate the number of unblocked buildings it can see.
 int DoSomething(StackADT s, int value) {
-    int highest_so_far = -1;
-    int count, caseA = 0;
+    int count = 0;
     if(IsEmpty(s)){
         Push(s, value);
         return 0;
@@ -103,7 +102,6 @@ int DoSomething(StackADT s, int value) {
     else{
         
     }
-
     Push(s, value);
     return count;
 }

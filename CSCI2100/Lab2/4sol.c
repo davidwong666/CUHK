@@ -95,74 +95,7 @@ int Top(StackADT s) {
 // Tips: This property should help a new item calculate the number of unblocked buildings it can see.
 int DoSomething(StackADT s, int value) {
     // write your code here
-    int caseA = 1;
-    int blockingheight, count = 0;
-    static int maxheight, prevpos = 0;
-    // base case for the first building
-    if(IsEmpty(s)){
-        maxheight = value;
-        prevpos = 1;
-        Push(s, value);
-        return 0;
-    }
-    StackADT temp = CreateStack(s->capacity);
-    if(value > maxheight){
-        maxheight = value;
-        Push(s, value);
-        prevpos = s->size;
-        count = 0;
-        return s->size-1;
-    }
-    else if(value == maxheight){
-        count = 0;
-        int pos = prevpos; // create pos for return
-        Push(s, value);
-        prevpos = s->size; // update prevpos
-        return s->size - pos;
-    }
-    //for value < maxheight
-    else{
-        while(!IsEmpty(s)){
-            if(caseA == 1){
-                if(value > Top(s)){
-                    blockingheight = value;
-                    count++;
-                    Push(temp, Top(s));
-                    Pop(s);
-                }
-                // if value <= Top(s)
-                else{
-                    blockingheight = Top(s);
-                    caseA = 2;
-                    count++;
-                    Push(temp, Top(s));
-                    Pop(s);
-                }
-            }
-            // if not caseA == 1
-            else{
-                if(Top(s) <= blockingheight){
-                    if(blockingheight == maxheight) break;
-                    Push(temp, Top(s));
-                    Pop(s);
-                }
-                // if Top(s) > blockingheight
-                else{
-                    blockingheight = Top(s); //update the blocking height
-                    if(blockingheight == maxheight) {count++; break;}
-                    count++;
-                    Push(temp, Top(s));
-                    Pop(s);
-                }
-            }
-        }
-    }
-    while(!IsEmpty(temp)){
-        Push(s, Top(temp));
-        Pop(temp);
-    }
-    Push(s, value);
-    return count;
+    
 }
 
 int main() {

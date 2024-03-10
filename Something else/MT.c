@@ -5,3 +5,13 @@ The first line of input contains a number n which is the size of the array. And 
 The second line of input contains n numbers separated by a space.
 
 */
+#include <stdio.h>
+
+int main(){
+    int n, k;
+    scanf("%d %d", &n, &k);
+    for(int i = 0; i < n; i++){
+        
+    }
+    return 0;
+}

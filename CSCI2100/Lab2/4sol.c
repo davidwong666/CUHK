@@ -94,22 +94,30 @@ int Top(StackADT s) {
 // Tips: Before you push a new item into the stack, you may do something in order to maintain certain property of this stack.
 // Tips: This property should help a new item calculate the number of unblocked buildings it can see.
 int DoSomething(StackADT s, int value) {
-    int count= 0;
+    int count = 0;
     if(IsEmpty(s)){
         Push(s, value);
         return 0;
     }
-    else{
-        int index = s->size-1;
-        if(Top(s) >= value){
-            count = s->size - index;
+    int index = s->size-1;
+    int blockingheight = value;
+    // counting numbers smaller than value
+    for(index; index>=0; index--){
+        if(s->arr[index] < value){
+            count++;
+        }
+        else if(s->arr[index] == value){
+            count++; break;
         }
         else{
-            for(index; index>=0; index--){
-                if(s->arr[index] > value){
-                    count++;
-                }
-            }
+            break;
+        }
+    }
+    // counting numbers larger than value
+    for(index; index>=0; index--){
+        if(s->arr[index] > blockingheight){
+            count++;
+            blockingheight = s->arr[index];
         }
     }
     Push(s, value);

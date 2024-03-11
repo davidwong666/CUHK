@@ -8,10 +8,18 @@ The second line of input contains n numbers separated by a space.
 #include <stdio.h>
 
 int main(){
-    int n, k;
+    int n, k, count = 0;
+    char c;
     scanf("%d %d", &n, &k);
     for(int i = 0; i < n; i++){
-        
+        scanf("%c", &c);
+        if(c == 'M' || c == 'T') count++;
+        else if(k>0){
+            count++;
+            k--;
+        }
     }
+
+    printf("%d\n", count);
     return 0;
 }

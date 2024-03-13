@@ -99,7 +99,18 @@ int DoSomething(StackADT s, int value) {
         Push(s, value);
         return 0;
     }
-    return count;
+    if(Top(s) > value){
+        Push(s, value);
+        return s->size-1;
+    }
+    else{
+        int result = s->size;
+        while(!IsEmpty(s) && Top(s) <= value){
+            Pop(s);
+        }
+        Push(s, value);
+        return result;
+    }
 }
 
 int main() {
